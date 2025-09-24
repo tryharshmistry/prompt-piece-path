@@ -10,6 +10,7 @@ interface PuzzlePieceProps {
   totalRows: number;
   totalCols: number;
   onClick: () => void;
+  url?: string;
 }
 
 export const PuzzlePiece = ({ 
@@ -18,7 +19,8 @@ export const PuzzlePiece = ({
   position, 
   totalRows, 
   totalCols, 
-  onClick 
+  onClick,
+  url 
 }: PuzzlePieceProps) => {
   const { row, col } = position;
   
@@ -37,7 +39,11 @@ export const PuzzlePiece = ({
       onClick={(e) => {
         e.preventDefault();
         e.stopPropagation();
-        onClick();
+        if (isUnlocked && url) {
+          window.open(url, '_blank');
+        } else {
+          onClick();
+        }
       }}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}

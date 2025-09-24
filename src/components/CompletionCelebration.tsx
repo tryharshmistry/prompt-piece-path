@@ -4,21 +4,19 @@ import confetti from "canvas-confetti";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/enhanced-button";
 import { Badge } from "@/components/ui/badge";
-import { Trophy, Share2, Download, Star, Edit3 } from "lucide-react";
+import { Trophy, Share2, Download, Star, Printer } from "lucide-react";
 import puzzleImage from "@/assets/puzzle-image.jpg";
 
 interface CompletionCelebrationProps {
   playerName: string;
   onShare: () => void;
   onRestart: () => void;
-  onEditCertificate: () => void;
 }
 
 export const CompletionCelebration = ({ 
   playerName, 
   onShare, 
-  onRestart,
-  onEditCertificate 
+  onRestart
 }: CompletionCelebrationProps) => {
   
   useEffect(() => {
@@ -164,16 +162,8 @@ export const CompletionCelebration = ({
                   Try Again
                 </Button>
                 <Button
-                  variant="premium"
-                  onClick={onEditCertificate}
-                >
-                  <Edit3 className="w-4 h-4 mr-1" />
-                  Certificate
-                </Button>
-                <Button
                   variant="success"
                   onClick={() => {
-                    // Simple download simulation
                     const link = document.createElement('a');
                     link.href = puzzleImage;
                     link.download = `${playerName}-puzzle-completion.jpg`;
@@ -181,7 +171,14 @@ export const CompletionCelebration = ({
                   }}
                 >
                   <Download className="w-4 h-4 mr-1" />
-                  Save
+                  Download
+                </Button>
+                <Button
+                  variant="secondary"
+                  onClick={() => window.print()}
+                >
+                  <Printer className="w-4 h-4 mr-1" />
+                  Print
                 </Button>
               </div>
             </motion.div>

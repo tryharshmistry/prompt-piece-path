@@ -4,19 +4,21 @@ import confetti from "canvas-confetti";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/enhanced-button";
 import { Badge } from "@/components/ui/badge";
-import { Trophy, Share2, Download, Star } from "lucide-react";
+import { Trophy, Share2, Download, Star, Edit3 } from "lucide-react";
 import puzzleImage from "@/assets/puzzle-image.jpg";
 
 interface CompletionCelebrationProps {
   playerName: string;
   onShare: () => void;
   onRestart: () => void;
+  onEditCertificate: () => void;
 }
 
 export const CompletionCelebration = ({ 
   playerName, 
   onShare, 
-  onRestart 
+  onRestart,
+  onEditCertificate 
 }: CompletionCelebrationProps) => {
   
   useEffect(() => {
@@ -154,12 +156,19 @@ export const CompletionCelebration = ({
                 Share Your Achievement
               </Button>
               
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-3 gap-2">
                 <Button
                   variant="outline"
                   onClick={onRestart}
                 >
                   Try Again
+                </Button>
+                <Button
+                  variant="premium"
+                  onClick={onEditCertificate}
+                >
+                  <Edit3 className="w-4 h-4 mr-1" />
+                  Certificate
                 </Button>
                 <Button
                   variant="success"

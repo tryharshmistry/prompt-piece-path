@@ -34,7 +34,11 @@ export const PuzzlePiece = ({
           ? "border-success shadow-success" 
           : "border-puzzle-locked shadow-card-custom hover:shadow-puzzle"
       )}
-      onClick={onClick}
+      onClick={(e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        onClick();
+      }}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       initial={{ opacity: 0, scale: 0.8 }}

@@ -19,6 +19,7 @@ const buttonVariants = cva(
         success: "bg-gradient-success text-white shadow-success hover:shadow-lg transform hover:scale-105 transition-all duration-300",
         puzzle: "bg-gradient-puzzle text-foreground shadow-card-custom hover:shadow-puzzle transform hover:scale-105 transition-all duration-300",
         unlock: "bg-warning text-white shadow hover:shadow-lg animate-bounce-gentle",
+        premium: "bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300",
       },
       size: {
         default: "h-9 px-4 py-2",

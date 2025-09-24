@@ -4,6 +4,7 @@ import { PuzzlePiece } from "./PuzzlePiece";
 import { PromptModal } from "./PromptModal";
 import { ProgressBar } from "./ProgressBar";
 import { CompletionCelebration } from "./CompletionCelebration";
+import { CertificateEditor } from "./CertificateEditor";
 import { useToast } from "@/hooks/use-toast";
 import { useIsMobile } from "@/hooks/use-mobile";
 
@@ -67,6 +68,7 @@ export const PuzzleBoard = ({ playerName, onRestart }: PuzzleBoardProps) => {
   const [unlockedPieces, setUnlockedPieces] = useState<Set<number>>(new Set());
   const [selectedPiece, setSelectedPiece] = useState<number | null>(null);
   const [isCompleted, setIsCompleted] = useState(false);
+  const [showCertificateEditor, setShowCertificateEditor] = useState(false);
   const { toast } = useToast();
   const isMobile = useIsMobile();
 
@@ -140,12 +142,22 @@ export const PuzzleBoard = ({ playerName, onRestart }: PuzzleBoardProps) => {
     };
   };
 
+  if (showCertificateEditor) {
+    return (
+      <CertificateEditor
+        playerName={playerName}
+        onBack={() => setShowCertificateEditor(false)}
+      />
+    );
+  }
+
   if (isCompleted) {
     return (
       <CompletionCelebration
         playerName={playerName}
         onShare={handleShare}
         onRestart={onRestart}
+        onEditCertificate={() => setShowCertificateEditor(true)}
       />
     );
   }
